@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const axios = require('axios');
 const morgan = require('morgan');	    
+const marketplaceRoutes = require('./routes/marketplaceRoutes');
 
 const app = express();
 app.use(morgan('dev'));
@@ -40,6 +41,8 @@ connectDB();
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
+
+app.use('/api/marketplace', marketplaceRoutes);
 
 // Use routes
 app.use('/api', environmentalRoutes);
